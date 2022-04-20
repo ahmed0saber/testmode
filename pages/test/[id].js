@@ -5,6 +5,12 @@ import Link from 'next/link'
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib'
 import Swal from 'sweetalert2'
 
+export async function getServerSideProps(context) {
+    return {
+      props: {}, // will be passed to the page component as props
+    };
+}
+
 export default function Test() {
     const [questions, setQuestions] = useState([])
     const [loaded, setLoaded] = useState(false)
@@ -144,7 +150,7 @@ export default function Test() {
                 if(!checked){
                     setTimer(timer-1)
                 }
-            }else if(!timeout){
+            }else if(!timeout && loaded){
                 setTimeout(true)
                 Swal.fire({
                     icon: 'info',
@@ -277,7 +283,7 @@ export default function Test() {
                 </section>
             } </> : <section className={[styles.test, styles.certificate].join(" ")}>
                 <h2>Something went wrong..</h2>
-                <p>Maybe you have refreshed the page or tried to open it directly without visiting the home page.</p>
+                <p>This test doesn&apos;t exist.</p>
                 <Link href="/">Back To Home</Link>
             </section>}
         </main>
