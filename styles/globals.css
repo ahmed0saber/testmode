@@ -1,0 +1,32 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: 0;
+  font-family: "Bitter", sans-serif;
+}
+body{
+  background-color: #343A40;
+}
+main{
+  display: flex;
+  justify-content: center;
+}
+::selection {
+  color: #F8F9FA;
+  background: #343A40;
+}
+.choosen{
+  background-color: #007BFF55 !important;
+  color: #343A40;
+  border: 2px solid #007BFF55 !important;
+}
+.correct{
+  background-color: #28A745 !important;
+  color: #F8F9FA;
+  border: 2px solid #28A745 !important;
+}
+.wrong{
+  background-color: #DC3545 !important;
+  color: #F8F9FA;
+  border: 2px solid #DC3545 !important;
+}

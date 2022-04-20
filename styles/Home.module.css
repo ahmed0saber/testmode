@@ -1,0 +1,48 @@
+.tests{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 10px;
+  gap: 10px;
+}
+.test{
+  padding: 10px;
+  background-color: #F8F9FA;
+  flex: 1;
+  width: 100%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.test h1{
+  font-size: 32px;
+}
+.test a{
+  text-decoration: none;
+  color: #007BFF;
+}
+.test p{
+  line-height: 26px;
+  font-size: 17px;
+  margin: 10px 0;
+}
+.test .row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.tests .test a{
+  padding: 10px 30px;
+  background-color: #007BFF;
+  color: #F8F9FA;
+  display: inline-block;
+  width: fit-content;
+  font-size: 17px;
+  border: none;
+}
+.tests .test a:active{
+  background-color: #343A40;
+}
