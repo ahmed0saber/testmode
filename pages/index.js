@@ -9,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     if(!loaded){
-      fetch("api/tests")
+      fetch("./api/tests")
       .then(response => response.json())
       .then(data => {
           setTestsData(data.tests)
