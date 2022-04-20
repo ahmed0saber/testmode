@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react"
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib'
-import swal from 'sweetalert'
+import Swal from 'sweetalert2'
 
 export default function Test() {
     const [questions, setQuestions] = useState([])
@@ -53,24 +53,40 @@ export default function Test() {
 
     function checkAnswer(){
         if(currentAnswer == undefined){
-            swal("Choose First", "", "info")
+            Swal.fire({
+                icon: 'info',
+                title: 'Choose First',
+                text: '',
+            })
             return
         }
         if(checked){
-            swal("Already Answered", "", "info")
+            Swal.fire({
+                icon: 'info',
+                title: 'Already Answered',
+                text: '',
+            })
             return
         }
         setChecked(true)
         let radioBtns = answersContainer.current.childNodes
         if(currentAnswer == questions[currentQuestion].correctAnswer){
-            swal("Correct Answer", "", "success")
+            Swal.fire({
+                icon: 'success',
+                title: 'Correct Answer',
+                text: '',
+            })
             if(timeout){
                 setScore(score+2)
             }else{
                 setScore(score+5)
             }
         }else{
-            swal("Wrong Answer", "", "warning")
+            Swal.fire({
+                icon: 'error',
+                title: 'Wrong Answer',
+                text: '',
+            })
             radioBtns[currentAnswer].classList.add("wrong")
         }
         radioBtns[questions[currentQuestion].correctAnswer].classList.add("correct")
@@ -81,11 +97,19 @@ export default function Test() {
 
     function nextQuestion(){
         if(!checked){
-            swal("Not Checked", "You need to check the correct answer first", "info")
+            Swal.fire({
+                icon: 'info',
+                title: 'Not Checked',
+                text: 'You need to check the correct answer first',
+            })
             return
         }
         if(currentQuestion >= questions.length - 1){
-            swal("Test Completed", "You have answered all questions", "info")
+            Swal.fire({
+                icon: 'info',
+                title: 'Test Completed',
+                text: 'You have answered all questions',
+            })
             if(score >= questions.length * 3){
                 setSuccess(true)
             }
@@ -122,7 +146,11 @@ export default function Test() {
                 }
             }else if(!timeout){
                 setTimeout(true)
-                swal("Time Out", "If you answer this question correctly, you will get only 2 points instead of 5", "info")
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Time Out',
+                    text: 'If you answer this question correctly, you will get only 2 points instead of 5',
+                })
             }
         },1000)
         return () => clearInterval(timerLoop)
@@ -130,11 +158,19 @@ export default function Test() {
 
     function previousQuestion(){
         if(!checked){
-            swal("Not Checked", "You need to check the correct answer first", "info")
+            Swal.fire({
+                icon: 'info',
+                title: 'Not Checked',
+                text: 'You need to check the correct answer first',
+            })
             return
         }
         if(currentQuestion < 1){
-            swal("First Question", "You can't go back", "info")
+            Swal.fire({
+                icon: 'info',
+                title: 'First Question',
+                text: 'You can&apos;t go back',
+            })
         }else{
             let radioBtns = answersContainer.current.childNodes
             radioBtns[currentAnswer].classList.remove("choosen")
@@ -152,7 +188,11 @@ export default function Test() {
 
     async function generateCertificate(){
         if(username == undefined || username.trim() == ""){
-            swal("Missing Name", "Enter your name first", "info")
+            Swal.fire({
+                icon: 'info',
+                title: 'Missing Name',
+                text: 'Enter your name first',
+            })
             return
         }
         const existingPdfBytes = await fetch("https://ahmed0saber.github.io/TestMode-SPA-without-React/Test%20Mode%20Certificate.pdf").then(res => res.arrayBuffer())
