@@ -7,7 +7,7 @@
 body{
   background-color: #343A40;
 }
-body > div{
+body > div#__next{
   min-height: 100vh;
   display: flex;
   flex-direction: column;

@@ -9,8 +9,8 @@ export default function handler(req, res) {
         {
             urlKey: "html",
             title: "HTML Test",
-            numberOfQ: 2,
-            description: "This test covers Attributes.",
+            numberOfQ: 14,
+            description: "This test covers Attributes, Headings, Paragraphs, Styles, Formatting, Quotations, Links and Images.",
         },
         {
             urlKey: "css",

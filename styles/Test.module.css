@@ -18,6 +18,9 @@
 .answerOptions:hover{
     border: 2px solid #343A40;
 }
+.answerOptions:focus{
+    outline: none;
+}
 .test{
     background-color: #F8F9FA;
     padding: 10px;
