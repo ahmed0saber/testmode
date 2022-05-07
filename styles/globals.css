@@ -36,3 +36,7 @@ main{
   color: #F8F9FA;
   border: 2px solid #DC3545 !important;
 }
+.swal2-confirm.swal2-styled{
+  background-color: #007BFF !important;
+  padding: 10px 30px;
+}

@@ -45,10 +45,17 @@
     margin: 4px 0 0 0;
     cursor: pointer;
     outline: none;
+    transition-duration: 0.2s;
 }
-.test .btn:active{
+.test .btn:hover{
     background-color: #343A40;
     border: 2px solid #343A40;
+    color: #F8F9FA;
+}
+.test .btn:active{
+    background-color: #F8F9FA;
+    border: 2px solid #343A40;
+    color: #343A40;
 }
 .test .btns .btn{
     width: calc(50% - 2px);
@@ -56,9 +63,13 @@
     color: #007BFF;
     border: 2px solid #007BFF;
 }
-.test .btns .btn:active{
+.test .btns .btn:hover{
     background-color: #007BFF;
-    border: 2px solid #007BFF;
+    color: #F8F9FA;
+}
+.test .btns .btn:active{
+    background-color: #343A40;
+    border: 2px solid #343A40;
     color: #F8F9FA;
 }
 .test .row{
@@ -124,13 +135,20 @@
     cursor: pointer;
 }
 .certificate a, .certificate button{
-    padding: 10px 30px;
+    padding: 8px 28px;
     background-color: #007BFF;
     color: #F8F9FA;
     display: inline-block;
     font-size: 17px;
-    border: none;
+    border: 2px solid #007BFF;
+}
+.certificate a:hover, .certificate button:hover{
+    background-color: #F8F9FA;
+    color: #007BFF;
+    border: 2px solid #007BFF;
 }
 .certificate a:active, .certificate button:active{
     background-color: #343A40;
+    border: 2px solid #343A40;
+    color: #F8F9FA;
 }

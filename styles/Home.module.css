@@ -35,14 +35,34 @@
   align-items: center;
 }
 .tests .test a{
-  padding: 10px 30px;
+  padding: 8px 28px;
   background-color: #007BFF;
   color: #F8F9FA;
   display: inline-block;
   width: fit-content;
   font-size: 17px;
-  border: none;
+  border: 2px solid #007BFF;
+  line-height: 24px;
+  transition-duration: 0.2s;
+}
+.tests .test a:hover{
+  background-color: #F8F9FA;
+  color: #007BFF;
+  border: 2px solid #007BFF;
 }
 .tests .test a:active{
   background-color: #343A40;
+  color: #F8F9FA;
+  border: 2px solid #343A40;
+}
+.soon{
+  background-color: #343A40;
+  color: #F8F9FA;
+  width: fit-content;
+  padding: 8px 28px;
+  margin: 0 !important;
+  font-size: 17px;
+  border: 2px solid #343A40;
+  display: inline-block;
+  line-height: 24px !important;
 }

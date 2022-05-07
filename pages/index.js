@@ -31,7 +31,7 @@ export default function Home() {
         <span>{testsNumber} Tests Completed</span>
       </div>
       <p>TestMode is where you can test your skills and get certified.</p>
-      <p className="copyright">Developed by <a rel="noreferrer" href="https://github.com/ahmed0saber" target="_blank">ahmed0saber</a></p>
+      <p className="copyright">Developed by <a rel="noreferrer" href="https://www.linkedin.com/in/ahmed0saber/" target="_blank">ahmed0saber</a></p>
     </header>
     <main>
       <section className={styles.tests}>
@@ -43,7 +43,10 @@ export default function Home() {
               </div>
               <p>{testData.description}</p>
               <div>
-                <Link href={`/test/${testData.urlKey}`}>Start the Test</Link>
+                {testData.comingSoon ?
+                  <p className={styles.soon}>coming soon</p>
+                  : <Link href={`/test/${testData.urlKey}`}>Start the Test</Link>
+                }
               </div>
             </div>
         ) : <></>}
