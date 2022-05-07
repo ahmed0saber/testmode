@@ -20,7 +20,7 @@ export default function Test() {
     const [checked, setChecked] = useState(false)
     const answersContainer = useRef(null)
     const [score, setScore] = useState(0)
-    const [timer, setTimer] = useState(10)
+    const [timer, setTimer] = useState(60)
     const [timeout, setTimeout] = useState(false)
     const [lastQuestionReached, setLastQuestionReached] = useState(0)
     const [allUserAnswers, setAllUserAnswers] = useState([])
@@ -131,7 +131,7 @@ export default function Test() {
             if(currentQuestion >= lastQuestionReached){
                 setLastQuestionReached(x)
                 setChecked(false)
-                setTimer(10)
+                setTimer(60)
                 setTimeout(false)
                 setCurrentAnswer()
             }else{
