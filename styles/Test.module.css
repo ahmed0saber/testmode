@@ -141,6 +141,7 @@
     display: inline-block;
     font-size: 17px;
     border: 2px solid #007BFF;
+    transition-duration: 0.2s;
 }
 .certificate a:hover, .certificate button:hover{
     background-color: #F8F9FA;
