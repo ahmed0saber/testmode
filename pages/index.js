@@ -18,22 +18,34 @@ export default function Home() {
       fetch("https://api.countapi.xyz/get/tests/9e372957-e3fa-430d-b076-dcd5f5fe9c7c")
       .then(response => response.json())
       .then(data => {
-          setTestsNumber(data.value)
+        let counts = 0
+        const testsCounter = setInterval(() => {
+          if(counts<data.value){
+            setTestsNumber(++counts)
+          }else{
+            clearInterval(testsCounter)
+          }
+        }, 3000/data.value)
       })
     }
   }, [loaded])
 
+  function removeHash(){
+    setTimeout(() =>{
+      history.pushState("", document.title, window.location.pathname + window.location.search)
+    }, 400)
+  }
+
   return (
     <>
-    <header className={styles.test}>
-      <div className={styles.row}>
-        <h1>TestMode</h1>
-        <span>{testsNumber} Tests Completed</span>
-      </div>
-      <p>TestMode is where you can test your skills and get certified.</p>
-      <p className="copyright">Developed by <a rel="noreferrer" href="https://www.linkedin.com/in/ahmed0saber/" target="_blank">ahmed0saber</a></p>
+    <header className={[styles.test, styles.heroSection].join(" ")}>
+      <h1>Test Mode</h1>
+      <p>A website where you can test your skills in some technologies related to programming &amp; get certified when you pass any test. 
+      Our great learners have successfully completed {testsNumber} tests. 
+      This website has been developed by <a rel="noreferrer" href="https://www.linkedin.com/in/ahmed0saber/" target="_blank">ahmed0saber</a></p>
+      <a onClick={removeHash} href="#tests" className={styles.btn}>Get Started</a>
     </header>
-    <main>
+    <main id="tests">
       <section className={styles.tests}>
         {loaded ? testsData.map((testData,index) =>
             <div key={index} className={styles.test}>
@@ -44,8 +56,8 @@ export default function Home() {
               <p>{testData.description}</p>
               <div>
                 {testData.comingSoon ?
-                  <p className={styles.soon}>coming soon</p>
-                  : <Link href={`/test/${testData.urlKey}`}>Start the Test</Link>
+                  <p className={styles.soon}>Coming Soon</p>
+                  : <Link href={`/test/${testData.urlKey}`}>Start The Test</Link>
                 }
               </div>
             </div>

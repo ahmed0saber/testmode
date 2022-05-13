@@ -1,8 +1,13 @@
 *{
   padding: 0;
   margin: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
   font-family: "Bitter", sans-serif;
+  outline: none;
+  position: relative;
+}
+html{
+  scroll-behavior: smooth;
 }
 body{
   background-color: #343A40;
