@@ -46,6 +46,10 @@
     cursor: pointer;
     outline: none;
     transition-duration: 0.2s;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 .test .btn:hover{
     background-color: #343A40;
@@ -56,6 +60,10 @@
     background-color: #F8F9FA;
     border: 2px solid #343A40;
     color: #343A40;
+}
+.test .btn i{
+    font-size: 20px;
+    margin: 0 8px 0 0;
 }
 .test .btns .btn{
     width: calc(50% - 2px);
@@ -71,6 +79,13 @@
     background-color: #343A40;
     border: 2px solid #343A40;
     color: #F8F9FA;
+}
+.test .btns .btn i{
+    font-size: 24px;
+    margin: 0 8px 0 0;
+}
+.test .btns .btn:nth-of-type(2) i{
+    margin: 0 0 0 8px;
 }
 .test .row{
     display: flex;
@@ -142,6 +157,10 @@
     font-size: 17px;
     border: 2px solid #007BFF;
     transition-duration: 0.2s;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 .certificate a:hover, .certificate button:hover{
     background-color: #F8F9FA;
@@ -152,4 +171,8 @@
     background-color: #343A40;
     border: 2px solid #343A40;
     color: #F8F9FA;
+}
+.certificate button i, .certificate a i{
+    font-size: 24px;
+    margin: 0 8px 0 0;
 }

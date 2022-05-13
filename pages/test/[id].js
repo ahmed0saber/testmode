@@ -28,6 +28,8 @@ export default function Test() {
     const [success, setSuccess] = useState(false)
     const [testName, setTestName] = useState()
     const [username, setUsername] = useState()
+    const [sharingUrl, setSharingUrl] = useState("https://testmode.vercel.app/")
+    const [sharingText, setSharingText] = useState("")
 
     useEffect(() => {
         if(!loaded){
@@ -40,6 +42,7 @@ export default function Test() {
             .then(data => {
                 setQuestions(data.questions)
                 setTestName(data.testname)
+                setSharingText("I'm excited to share that I have passed " + data.testname + " and got certified at TestMode.")
                 setLoaded(true)
             })
         }
@@ -214,9 +217,9 @@ export default function Test() {
             color: rgb(0.1, 0.1, 0.1),
         })
         firstPage.drawText(testName, {
-            x: 472,
-            y: 390,
-            size: 30,
+            x: 475,
+            y: 395,
+            size: 22,
             font: helveticaFont,
             color: rgb(0.1, 0.1, 0.1),
         })
@@ -234,6 +237,26 @@ export default function Test() {
         setUsername(e.target.value)
     }
 
+    function shareToFacebook(){
+        window.open('http://facebook.com/sharer/sharer.php?quote='+sharingText+'&u='+encodeURIComponent(sharingUrl), '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0')
+    }
+
+    function shareToWhatsApp(){
+        window.open('https://api.whatsapp.com/send?text='+sharingText+' Test your skills now '+sharingUrl, '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0')
+    }
+
+    function shareToLinkedIn(){
+        window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(sharingUrl), '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0')
+    }
+
+    function shareToTwitter(){
+        window.open('https://twitter.com/intent/tweet?text='+sharingText+' Test your skills now &url='+sharingUrl+'&via=ahmed0saber0&hashtags=testmode,skill_test', '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0')
+    }
+
+    function shareToTelegram(){
+        window.open('https://t.me/share/url?url='+sharingUrl+'&text='+sharingText, '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0')
+    }
+
     return (
         <main>
             {loaded ? <> {
@@ -243,14 +266,48 @@ export default function Test() {
                             <h2>Congratulations! You have successfully passed the test..</h2>
                             <p>Enter your full name to get your certificate.</p>
                             <input onChange={changeName} type="text" placeholder="Ex: Ahmed Saber Fathy" autoComplete='false'/>
-                            <button onClick={generateCertificate}>Get certificate</button>
-                            <Link href="/">Back To Home</Link>
+                            <button onClick={generateCertificate}>
+                                <i className="fa fa-certificate"></i>
+                                Get certificate
+                            </button>
+                            <Link href="/" passHref>
+                                <a>
+                                    <i className="fa fa-angle-left"></i>
+                                    Back To Home
+                                </a>
+                            </Link>
+                            <p>Share your achievement with friends.</p>
+                            <button onClick={shareToFacebook}>
+                                <i className="fa fa-facebook-square"></i>
+                                Share To Facebook
+                            </button>
+                            <button onClick={shareToWhatsApp}>
+                                <i className="fa fa-whatsapp"></i>
+                                Share To WhatsApp
+                            </button>
+                            <button onClick={shareToLinkedIn}>
+                                <i className="fa fa-linkedin"></i>
+                                Share To LinkedIn
+                            </button>
+                            <button onClick={shareToTwitter}>
+                                <i className="fa fa-twitter"></i>
+                                Share To Twitter
+                            </button>
+                            <button onClick={shareToTelegram}>
+                                <i className="fa fa-telegram"></i>
+                                Share To Telegram
+                            </button>
                         </section>
                         </> : <>
                         <section className={[styles.test, styles.certificate].join(" ")}>
                             <h2>Unfortunately, You have not passed the test..</h2>
                             <p>Don&apos;t worry, You can try again later.</p>
-                            <Link href="/">Back To Home</Link>
+                            <Link href="/" passHref>
+                                <a>
+                                    <i className="fa fa-angle-left"></i>
+                                    Back To Home
+                                </a>
+                            </Link>
                         </section>
                         </>
                     } </> : 
@@ -274,17 +331,36 @@ export default function Test() {
                         ))}
                         </div>
 
-                        <button className={styles.btn} onClick={checkAnswer}>Check</button>
+                        {/* <button className={styles.btn} onClick={checkAnswer}>
+                            <i className="fa fa-check-double"></i>
+                            Check
+                        </button> */}
                         <div className={styles.btns}>
-                            <button className={styles.btn} onClick={previousQuestion}>Back</button>
-                            <button className={styles.btn} onClick={nextQuestion}>Next</button>
+                            <button className={styles.btn} onClick={previousQuestion}>
+                                <i className="fa fa-angle-left"></i>
+                                Back
+                            </button>
+                            { checked ? 
+                            <button className={styles.btn} onClick={nextQuestion}>
+                                Next
+                                <i className="fa fa-angle-right"></i>
+                            </button> :
+                            <button className={styles.btn} onClick={checkAnswer}>
+                                Check
+                                <i className="fa fa-check-double"></i>
+                            </button> }
                         </div>
                     </div>
                 </section>
             } </> : <section className={[styles.test, styles.certificate].join(" ")}>
                 <h2>Something went wrong..</h2>
                 <p>This test doesn&apos;t exist.</p>
-                <Link href="/">Back To Home</Link>
+                <Link href="/" passHref>
+                    <a>
+                        <i className="fa fa-angle-left"></i>
+                        Back To Home
+                    </a>
+                </Link>
             </section>}
         </main>
     )

@@ -25,7 +25,7 @@ export default function Home() {
           }else{
             clearInterval(testsCounter)
           }
-        }, 3000/data.value)
+        }, 60)
       })
     }
   }, [loaded])
@@ -40,10 +40,13 @@ export default function Home() {
     <>
     <header className={[styles.test, styles.heroSection].join(" ")}>
       <h1>Test Mode</h1>
-      <p>A website where you can test your skills in some technologies related to programming &amp; get certified when you pass any test. 
+      <p>A website where you can test your skills in some technologies related to programming and get certified when you pass any test. 
       Our great learners have successfully completed {testsNumber} tests. 
       This website has been developed by <a rel="noreferrer" href="https://www.linkedin.com/in/ahmed0saber/" target="_blank">ahmed0saber</a></p>
-      <a onClick={removeHash} href="#tests" className={styles.btn}>Get Started</a>
+      <a onClick={removeHash} href="#tests" className={styles.btn}>
+        get started
+        <i className="fa fa-angle-right"></i>
+      </a>
     </header>
     <main id="tests">
       <section className={styles.tests}>
@@ -56,8 +59,16 @@ export default function Home() {
               <p>{testData.description}</p>
               <div>
                 {testData.comingSoon ?
-                  <p className={styles.soon}>Coming Soon</p>
-                  : <Link href={`/test/${testData.urlKey}`}>Start The Test</Link>
+                  <p className={styles.soon}>
+                    Coming Soon
+                    <i className="fa fa-spinner"></i>
+                  </p>
+                  : <Link href={`/test/${testData.urlKey}`}>
+                      <a>
+                        Start The Test
+                        <i className="fa fa-angle-right"></i>
+                      </a>
+                    </Link>
                 }
               </div>
             </div>

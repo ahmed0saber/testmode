@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import Footer from '../components/Footer'
 import Head from 'next/head'
+import Script from 'next/script'
 
 function MyApp({ Component, pageProps }) {
   return <>
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="description" content="TestMode is where you can test your skills and get certified."/>
         <meta name="keywords" content="testmode, test, skill test, coding, programming, design, c++, cpp, html, css, js, javascript, certificate, leaderboard, ahmed0saber, Ahmed Saber"/>
         <meta name="author" content="Ahmed Saber, ahmed0saber, ahmed0saber33@gmail.com"/>
+        <meta property='og:url' content='https://testmode.vercel.app/'/>
         <meta name="og:title" content="TestMode"/>
         <meta name="og:description" content="TestMode is where you can test your skills and get certified."/>
         <meta property="og:image" content="https://drive.google.com/u/0/uc?id=1BUNKEX4ivBy4ZQX55XnouVAJpwTvRrMi&export=download"/>
@@ -23,6 +25,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
       <Footer/>
+      <Script src="https://kit.fontawesome.com/282bcf757e.js" crossorigin="anonymous"></Script>
     </>
 }
 
