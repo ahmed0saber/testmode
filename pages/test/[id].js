@@ -268,7 +268,7 @@ export default function Test() {
                             <input onChange={changeName} type="text" placeholder="Ex: Ahmed Saber Fathy" autoComplete='false'/>
                             <button onClick={generateCertificate}>
                                 <i className="fa fa-certificate"></i>
-                                Get certificate
+                                Get Certificate
                             </button>
                             <Link href="/" passHref>
                                 <a>
