@@ -178,7 +178,7 @@ export default function Test() {
             Swal.fire({
                 icon: 'info',
                 title: 'First Question',
-                text: 'You can&apos;t go back',
+                text: "You can't go back",
             })
         }else{
             let radioBtns = answersContainer.current.childNodes
