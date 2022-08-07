@@ -8,6 +8,7 @@
 }
 html{
   scroll-behavior: smooth;
+  scroll-padding-top: 10px;
 }
 body{
   background-color: #343A40;
@@ -18,7 +19,7 @@ body > div#__next{
   flex-direction: column;
   justify-content: space-between;
 }
-main{
+main.centerMain{
   display: flex;
   justify-content: center;
 }
@@ -44,4 +45,7 @@ main{
 .swal2-confirm.swal2-styled{
   background-color: #007BFF !important;
   padding: 10px 30px;
+}
+a, button{
+  cursor: pointer;
 }

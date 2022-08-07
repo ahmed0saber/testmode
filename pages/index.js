@@ -1,39 +1,41 @@
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 
 export default function Home() {
   const [testsData, setTestsData] = useState([])
   const [loaded, setLoaded] = useState(false)
   const [testsNumber, setTestsNumber] = useState(0)
+  const interviewQuestionsRef = useRef(null)
+  const testsRef = useRef(null)
+  const [interviewQuestionsTopics, setInterviewQuestionsTopics] = useState([])
 
   useEffect(() => {
     if(!loaded){
-      fetch("./api/tests")
-      .then(response => response.json())
-      .then(data => {
-          setTestsData(data.tests)
-          setLoaded(true)
-      })
       fetch("https://api.countapi.xyz/get/tests/9e372957-e3fa-430d-b076-dcd5f5fe9c7c")
       .then(response => response.json())
       .then(data => {
-        let counts = 0
-        const testsCounter = setInterval(() => {
-          if(counts<data.value){
-            setTestsNumber(++counts)
-          }else{
-            clearInterval(testsCounter)
-          }
-        }, 60)
+        setTestsNumber(data.value)
+        fetch("./api/interview-questions/all")
+        .then(response => response.json())
+        .then(data => {
+          setInterviewQuestionsTopics(data)
+          fetch("./api/tests/all")
+          .then(response => response.json())
+          .then(data => {
+            setTestsData(data)
+            setLoaded(true)
+          })
+        })
       })
     }
   }, [loaded])
 
-  function removeHash(){
-    setTimeout(() =>{
-      history.pushState("", document.title, window.location.pathname + window.location.search)
-    }, 400)
+  function scrollToInterviewQuestionsSection(){
+    interviewQuestionsRef.current.scrollIntoView()
+  }
+  function scrollToTestsSection(){
+    testsRef.current.scrollIntoView()
   }
 
   return (
@@ -43,36 +45,58 @@ export default function Home() {
       <p>A website where you can test your skills in some technologies related to programming and get certified when you pass any test. 
       Our great learners have successfully completed {testsNumber} tests. 
       This website has been developed by <a rel="noreferrer" href="https://www.linkedin.com/in/ahmed0saber/" target="_blank">ahmed0saber</a></p>
-      <a onClick={removeHash} href="#tests" className={styles.btn}>
-        get started
-        <i className="fa fa-angle-right"></i>
-      </a>
+      <div className={styles.btnsGroup}>
+        <a onClick={scrollToInterviewQuestionsSection} className={styles.btn}>
+          view interview questions
+        </a>
+        <a onClick={scrollToTestsSection} className={styles.btn}>
+          view tests
+        </a>
+      </div>
     </header>
-    <main id="tests">
-      <section className={styles.tests}>
-        {loaded ? testsData.map((testData,index) =>
-            <div key={index} className={styles.test}>
-              <div className={styles.row}>
-                  <h2>{testData.title}</h2>
-                  <span>{testData.numberOfQ} Questions</span>
-              </div>
-              <p>{testData.description}</p>
-              <div>
-                {testData.comingSoon ?
-                  <p className={styles.soon}>
-                    Coming Soon
-                    <i className="fa fa-spinner"></i>
-                  </p>
-                  : <Link href={`/test/${testData.urlKey}`}>
-                      <a>
-                        Start The Test
-                        <i className="fa fa-angle-right"></i>
-                      </a>
-                    </Link>
-                }
-              </div>
+    <main>
+      <section ref={interviewQuestionsRef} className={styles.interviewQuestionsSection}>
+        <h2>Interview Questions</h2>
+        <p>A newly added section where you can explore interview questions for some topics related to programming.</p>
+        <section className={styles.interviewTopics}>
+          {loaded ? interviewQuestionsTopics.map((interviewQuestionsTopic,index) =>
+            <div key={index}>
+              <p>{interviewQuestionsTopic.topic}</p>
+              <Link href={`interview-questions/${interviewQuestionsTopic.urlKey}`}>
+                <a>
+                  explore
+                </a>
+              </Link>
             </div>
-        ) : <></>}
+          ) : <></>}
+        </section>
+      </section>
+      <section ref={testsRef}>
+        <section className={styles.tests}>
+          {loaded ? testsData.map((testData,index) =>
+              <div key={index} className={styles.test}>
+                <div className={styles.row}>
+                    <h2>{testData.title}</h2>
+                    <span>{testData.numberOfQ} Questions</span>
+                </div>
+                <p>{testData.description}</p>
+                <div>
+                  {testData.comingSoon ?
+                    <p className={styles.soon}>
+                      Coming Soon
+                      <i className="fa fa-spinner"></i>
+                    </p>
+                    : <Link href={`/tests/${testData.urlKey}`}>
+                        <a>
+                          Start The Test
+                          <i className="fa fa-angle-right"></i>
+                        </a>
+                      </Link>
+                  }
+                </div>
+              </div>
+          ) : <></>}
+        </section>
       </section>
     </main>
     </>
