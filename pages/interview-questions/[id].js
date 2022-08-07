@@ -2,7 +2,7 @@ import styles from '../../styles/InterviewQuestions.module.css'
 import React, { useEffect, useState } from "react"
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import Accordion from './Accordion'
+import Accordion from '../../components/Accordion'
 
 export async function getServerSideProps(context) {
     return {

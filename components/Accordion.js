@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import styles from '../../styles/InterviewQuestions.module.css'
+import styles from '../styles/InterviewQuestions.module.css'
 
 export default function accordion(props) {
     const [isActive, setIsActive] = useState(false)
