@@ -35,6 +35,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 .test.heroSection a.btn:hover{
   background-color: #F8F9FA;
@@ -46,7 +51,7 @@
 }
 .interviewQuestionsSection{
   background-color: #F8F9FA;
-  margin: 10px;
+  /* margin: 10px; */
   padding: 10px;
   min-height: calc(100vh - 20px);
 }
@@ -55,30 +60,54 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
+  margin: 20px 0;
 }
 .interviewTopics > div{
-  width: calc(100% / 3 - 10px);
-  background-color: #343A40;
-  color: #F8F9FA;
+  width: calc(100% / 4 - 9px);
+  background-color: #F8F9FA;
+  color: #343A40;
   padding: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0px 0px 2px 2px #343A4032;
+  gap: 10px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+.interviewTopics > div img{
+  height: 100px;
 }
 @media (max-width: 1024px){
   .interviewTopics > div{
-    width: calc(100% / 2 - 5px);
+    width: calc(100% / 3 - 8px);
   }
 }
 @media (max-width: 786px){
   .interviewTopics > div{
+    width: calc(100% / 2 - 12px);
+  }
+}
+@media (max-width: 520px){
+  .interviewTopics > div{
     width: calc(100% / 1 - 0px);
   }
 }
-.interviewTopics > div > a{
+.interviewTopics > div .row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+.interviewTopics > div .row a{
   padding: 8px 16px;
   background-color: #007BFF;
   color: #F8F9FA;
@@ -93,8 +122,13 @@
   align-items: center;
   gap: 6px;
   text-decoration: none;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
-.interviewTopics > div > a:hover{
+.interviewTopics > div .row a:hover{
   background-color: #F8F9FA;
   color: #007BFF;
 }
@@ -105,8 +139,9 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 10px;
+  padding: 10px;
   gap: 10px;
+  background-color: #F8F9FA;
 }
 .test{
   padding: 10px;
@@ -118,10 +153,21 @@
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+  box-shadow: 0px 0px 2px 2px #343A4032;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 .test a{
   text-decoration: none;
   color: #007BFF;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 .test p{
   line-height: 26px;
@@ -177,6 +223,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 .soon i{
   font-size: 21px;

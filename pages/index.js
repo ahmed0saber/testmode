@@ -1,6 +1,7 @@
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import React, { useEffect, useState, useRef } from "react"
+import Image from 'next/image'
 
 export default function Home() {
   const [testsData, setTestsData] = useState([])
@@ -61,12 +62,14 @@ export default function Home() {
         <section className={styles.interviewTopics}>
           {loaded ? interviewQuestionsTopics.map((interviewQuestionsTopic,index) =>
             <div key={index}>
-              <p>{interviewQuestionsTopic.topic}</p>
-              <Link href={`interview-questions/${interviewQuestionsTopic.urlKey}`}>
-                <a>
-                  explore
-                </a>
-              </Link>
+              <img src={interviewQuestionsTopic.img} alt={interviewQuestionsTopic.topic}/>
+              {/* <p>{interviewQuestionsTopic.topic}</p> */}
+              <div className={styles.row}>
+                <Link href={`interview-questions/${interviewQuestionsTopic.urlKey}`}>
+                  <a>explore</a>
+                </Link>
+                <span>{interviewQuestionsTopic.numberOfQuestions} questions</span>
+              </div>
             </div>
           ) : <></>}
         </section>

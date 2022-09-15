@@ -3,15 +3,21 @@ export default function handler(req, res) {
         [
             {
                 topic: "HTML",
-                urlKey: "html"
+                urlKey: "html",
+                numberOfQuestions: 7,
+                img: "/images/html.png"
             },
             {
                 topic: "CSS",
-                urlKey: "css"
+                urlKey: "css",
+                numberOfQuestions: 8,
+                img: "/images/css.png"
             },
             {
                 topic: "JavaScript",
-                urlKey: "javascript"
+                urlKey: "javascript",
+                numberOfQuestions: 8,
+                img: "/images/js.jpg"
             }
         ]
     )
