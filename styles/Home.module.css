@@ -51,9 +51,10 @@
 }
 .interviewQuestionsSection{
   background-color: #F8F9FA;
-  /* margin: 10px; */
   padding: 10px;
-  min-height: calc(100vh - 20px);
+}
+.interviewQuestionsSection h2{
+  font-size: 28px;
 }
 .interviewTopics{
   display: flex;
@@ -135,13 +136,23 @@
 .interviewQuestionsSection > p{
   margin: 10px 0;
 }
+.testsContainer{
+  background-color: #F8F9FA;
+  padding: 10px;
+  margin: 40px 0 0 0;
+}
+.testsContainer h2{
+  font-size: 28px;
+}
+.testsContainer p{
+  margin: 10px 0;
+}
 .tests{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 10px;
   gap: 10px;
-  background-color: #F8F9FA;
+  margin: 20px 0 0 0;
 }
 .test{
   padding: 10px;

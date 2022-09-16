@@ -1,7 +1,6 @@
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import React, { useEffect, useState, useRef } from "react"
-import Image from 'next/image'
 
 export default function Home() {
   const [testsData, setTestsData] = useState([])
@@ -10,6 +9,7 @@ export default function Home() {
   const interviewQuestionsRef = useRef(null)
   const testsRef = useRef(null)
   const [interviewQuestionsTopics, setInterviewQuestionsTopics] = useState([])
+  const [pathTestsData, setPathTestsData] = useState([])
 
   useEffect(() => {
     if(!loaded){
@@ -25,7 +25,12 @@ export default function Home() {
           .then(response => response.json())
           .then(data => {
             setTestsData(data)
-            setLoaded(true)
+            fetch("./api/path-tests/all")
+            .then(response => response.json())
+            .then(data => {
+              setPathTestsData(data)
+              setLoaded(true)
+            })
           })
         })
       })
@@ -63,7 +68,6 @@ export default function Home() {
           {loaded ? interviewQuestionsTopics.map((interviewQuestionsTopic,index) =>
             <div key={index}>
               <img src={interviewQuestionsTopic.img} alt={interviewQuestionsTopic.topic}/>
-              {/* <p>{interviewQuestionsTopic.topic}</p> */}
               <div className={styles.row}>
                 <Link href={`interview-questions/${interviewQuestionsTopic.urlKey}`}>
                   <a>explore</a>
@@ -74,7 +78,9 @@ export default function Home() {
           ) : <></>}
         </section>
       </section>
-      <section ref={testsRef}>
+      <section ref={testsRef} className={styles.testsContainer}>
+        <h2>Technology Tests</h2>
+        <p>Pass these online tests and get certified.</p>
         <section className={styles.tests}>
           {loaded ? testsData.map((testData,index) =>
               <div key={index} className={styles.test}>
@@ -84,7 +90,36 @@ export default function Home() {
                 </div>
                 <p>{testData.description}</p>
                 <div>
-                  {testData.comingSoon ?
+                  {testData.numberOfQ < 1 ?
+                    <p className={styles.soon}>
+                      Coming Soon
+                      <i className="fa fa-spinner"></i>
+                    </p>
+                    : <Link href={`/tests/${testData.urlKey}`}>
+                        <a>
+                          Start The Test
+                          <i className="fa fa-angle-right"></i>
+                        </a>
+                      </Link>
+                  }
+                </div>
+              </div>
+          ) : <></>}
+        </section>
+      </section>
+      <section className={styles.testsContainer}>
+        <h2>Learning Path Tests</h2>
+        <p>Now you can get certified in the following profiles.</p>
+        <section className={styles.tests}>
+          {loaded ? pathTestsData.map((testData,index) =>
+              <div key={index} className={styles.test}>
+                <div className={styles.row}>
+                    <h2>{testData.title}</h2>
+                    <span>{testData.numberOfQ} Questions</span>
+                </div>
+                <p>{testData.description}</p>
+                <div>
+                  {testData.numberOfQ < 1 ?
                     <p className={styles.soon}>
                       Coming Soon
                       <i className="fa fa-spinner"></i>
