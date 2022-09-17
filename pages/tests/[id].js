@@ -2,7 +2,6 @@ import styles from '../../styles/Test.module.css'
 import React, { useEffect, useState, useRef } from "react"
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib'
 import Swal from 'sweetalert2'
 
 export async function getServerSideProps(context) {
@@ -208,33 +207,9 @@ export default function Test() {
             })
             return
         }
-        const existingPdfBytes = await fetch("https://ahmed0saber.github.io/TestMode-SPA-without-React/Test%20Mode%20Certificate.pdf").then(res => res.arrayBuffer())
-        const pdfDoc = await PDFDocument.load(existingPdfBytes)
-        const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica)
-        const pages = pdfDoc.getPages()
-        const firstPage = pages[0]
-        firstPage.drawText(username, {
-            x: 310,
-            y: 490,
-            size: 50,
-            font: helveticaFont,
-            color: rgb(0.1, 0.1, 0.1),
-        })
-        firstPage.drawText(testName, {
-            x: 475,
-            y: 395,
-            size: 22,
-            font: helveticaFont,
-            color: rgb(0.1, 0.1, 0.1),
-        })
-        const pdfBytes = await pdfDoc.save()
-        Download(pdfBytes, "application/pdf")
-    }
-
-    function Download(arrayBuffer, type) {
-        var blob = new Blob([arrayBuffer], { type: type })
-        var url = URL.createObjectURL(blob)
-        window.open(url)
+        localStorage.setItem("username", username)
+        localStorage.setItem("test", testName)
+        router.push("/certificate")
     }
 
     function changeName(e){
@@ -297,7 +272,7 @@ export default function Test() {
                                 <i className="fa fa-twitter"></i>
                                 Share To Twitter
                             </button>
-                            <button onClick={shareToTelegram}>
+                            <button className={styles.noMargin} onClick={shareToTelegram}>
                                 <i className="fa fa-telegram"></i>
                                 Share To Telegram
                             </button>
