@@ -41,7 +41,13 @@ export default function handler(req, res) {
                 urlKey: "jquery",
                 title: "jQuery Test",
                 numberOfQ: 7,
-                description: "This test covers Syntax, Selectors, Events, Effects.",
+                description: "This test covers Syntax, Selectors, Events and Effects.",
+            },
+            {
+                urlKey: "typescript",
+                title: "TypeScript Test",
+                numberOfQ: 6,
+                description: "This test covers Simple Types, Special Types, Arrays and Tuples.",
             },
             {
                 urlKey: "bootstrap",
